@@ -2,10 +2,8 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Coefficients for Basis D
-c_x = [27.0, 0.733730159, 0.639384921, -0.340760031, -0.1546875, -0.0231951678, 
-       -0.00130208333, 6.45874669e-06, 3.10019841e-06, 7.53520448e-08]
-c_y = [40.0, 2.5, -5.30193173e-15, 1.86927193e-15, 1.38781182e-15, 3.26315253e-16, 
-       3.95516953e-17, 2.65990933e-18, 9.43083794e-20, 1.37676466e-21]
+c_x = [64.9074, 1.4811, -0.2601, 0.5949, 0.1263, -0.0090, -0.0052, -0.0006, -0.0000, -0.0000]
+c_y = [40.0000, 2.5000, -5.3019e-15, 1.8693e-15, 1.3878e-15, 3.2632e-16, 3.9552e-17, 2.6599e-18, 9.4308e-20, 1.3768e-21]
 
 # Function to evaluate p_9(t) using Horner's method
 def horner(coeffs, t):
@@ -15,7 +13,7 @@ def horner(coeffs, t):
     return result
 
 # Define t_actual and scale to Basis D's domain
-t_actual = np.linspace(0, 540, 541)
+t_actual = np.linspace(0, 600, 601)
 t_scaled = (t_actual - 480) / 30
 
 # Evaluate p_9(t) for x and y
