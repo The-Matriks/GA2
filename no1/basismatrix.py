@@ -1,9 +1,9 @@
 import numpy as np
 
 # Given data points (replace with your processed data)
-t = np.array([0, 60, 120, 180, 240, 300, 360, 420, 480, 540])  # Time data
-x = np.array([317, 143, 88, 65, 50, 41, 35, 29, 27, 25])       # X-coordinates
-y = np.array([0, 5, 10, 15, 20, 25, 30, 35, 40, 45])           # Y-coordinates
+t = np.array([0, 60, 120, 180, 240, 300, 360, 420, 480, 540])
+x = np.array([0, 3.1294, 8.2671, 13.3462, 24.2, 34.0854, 45.0714, 58.1897, 64.9074, 72.9])
+y = np.array([0, 5, 10, 15, 20, 25, 30, 35, 40, 45])
 
 # Basis functions
 def construct_matrix(t, basis_type):

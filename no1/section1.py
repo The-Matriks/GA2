@@ -34,11 +34,11 @@ res = dict()
 for frame in dx_list:
     inner_list = []
 
-    x_real_0 = dx_list[frame][0]
+    x_real_0 = round(dx_list[frame][0], 4)
     inner_list.append(x_real_0)
     for i in range(1, len(dx_list[frame])):
         x_real_i = dx_list[frame][i] + inner_list[i - 1]
-        inner_list.append(x_real_i)
+        inner_list.append(round(x_real_i, 4))
 
     res[frame] = inner_list
 
