@@ -5,7 +5,6 @@ import matplotlib.pyplot as plt
 t = np.array([0, 60, 120, 180, 240, 300, 360, 420, 480, 540])  # Time data
 x = np.array([0.0, 3.129, 3.097, 13.346, 24.2, 34.085, 45.071, 58.19, 64.907, 72.9])  # Selected x-coordinates
 y = np.array([0, 5, 10, 15, 20, 25, 30, 35, 40, 45])  # Y-coordinates
-
 # Divided Differences Algorithm
 def divided_differences(t, values):
     n = len(t)
@@ -17,11 +16,7 @@ def divided_differences(t, values):
             table[i, j] = (table[i + 1, j - 1] - table[i, j - 1]) / (t[i + j] - t[i])
     return table[0, :]  # Return the coefficients (top row)
 
-# Compute Newton coefficients for x(t) and y(t)
-coeff_x = divided_differences(t, x)
-coeff_y = divided_differences(t, y)
-
-# Evaluate Newton Polynomial
+# Newton Polynomial Evaluation
 def newton_polynomial(t_eval, t, coeffs):
     n = len(coeffs)
     result = 0
@@ -29,17 +24,19 @@ def newton_polynomial(t_eval, t, coeffs):
         result = coeffs[i] + (t_eval - t[i]) * result
     return result
 
+# Compute Newton coefficients for x(t) and y(t)
+coeff_x = divided_differences(t, x)
+coeff_y = divided_differences(t, y)
+
 # Extend to p10(t) with t=600
 t_extended = np.append(t, 600)
-x_extended = np.append(x, 23.0)  # Extrapolated x(600)
-y_extended = np.append(y, 50.0)  # Extrapolated y(600)
-
-# Recompute coefficients for p10(t)
+x_extended = np.append(x, 2.336957)  # Actual x(600)
+y_extended = np.append(y, 50.0)  # Actual y(600)
 coeff_x_extended = divided_differences(t_extended, x_extended)
 coeff_y_extended = divided_differences(t_extended, y_extended)
 
 # Evaluate p9(t) and p10(t)
-t_eval = np.linspace(0, 600, 601)  # Evaluation points
+t_eval = np.linspace(0, 600, 601)
 p9_x = [newton_polynomial(ti, t, coeff_x) for ti in t_eval]
 p9_y = [newton_polynomial(ti, t, coeff_y) for ti in t_eval]
 p10_x = [newton_polynomial(ti, t_extended, coeff_x_extended) for ti in t_eval]
