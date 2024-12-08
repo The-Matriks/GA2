@@ -16,15 +16,17 @@ t_eval = np.linspace(0, 540, 600)
 spline_x_vals = [evaluate_spline(te, a_x, b_x, c_x, d_x, t_x) for te in t_eval]
 spline_y_vals = [evaluate_spline(te, a_y, b_y, c_y, d_y, t_y) for te in t_eval]
 
-# Plot results
+print(spline_x_vals)
+print(spline_y_vals)
+
+# Plot the parametric cubic spline
 plt.figure(figsize=(10, 6))
-plt.plot(t_eval, spline_x_vals, label="Cubic Spline x(t)", color="orange")
-plt.plot(t_eval, spline_y_vals, label="Cubic Spline y(t)", color="purple")
-plt.scatter(t, x, color="blue", label="x data points")
-plt.scatter(t, y, color="green", label="y data points")
-plt.xlabel("Time (t)")
-plt.ylabel("Values")
-plt.title("Cubic Spline Interpolation")
+plt.plot(spline_x_vals, spline_y_vals, label="Parametric Spline (x, y)", color="orange")
+plt.scatter(x, y, color="blue", label="Data Points (x, y)")
+plt.xlabel("x")
+plt.ylabel("y")
+plt.title("Parametric Cubic Spline Interpolation")
 plt.legend()
 plt.grid()
 plt.show()
+# Plot results
